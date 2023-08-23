@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BMI_Calaulator</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: aliceblue;
+        }
+        .centering {
+            display: flex;
+            justify-content: center;
+        }
+        .submit {
+            padding: 10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <h1 class="heading centering">BMI Calculator</h1>
+        <div>
+            <form id="formSelector">
+                <div class="heightInput centering">
+                    <label>Height in CM:  </label>
+                    <input type="text" id="height">
+                </div>
+                <br>
+                <div class="weightInput centering">
+                    <label>Weight in KG:  </label>
+                    <input type="text" id="weight">
+                </div>
+                <div class="centering submit">
+                    <button id="submitButton">Calculate</button>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <div class="result centering"> </div>
+    </div>
+</body>
+
+<script>
+    document.getElementById("formSelector").addEventListener("submit", function (eventTriggered) {
+        eventTriggered.preventDefault();
+        let heightValue = document.querySelector("#height").value;
+        let weightValue = document.getElementById("weight").value;
+
+        if (heightValue === "" || heightValue < 0 || weightValue === "" || weightValue < 0 || isNaN(heightValue) || isNaN(weightValue)) {
+            document.querySelector(".result").textContent = "Please enter valid data Entry points";
+        }
+        else {
+            resultingBMI = ((weightValue)/(heightValue*heightValue)).toFixed(3);
+            document.querySelector(".result").textContent = `The BMI of the user is ${resultingBMI}`;
+        }
+        
+    })
+    
+</script>
+</html>
