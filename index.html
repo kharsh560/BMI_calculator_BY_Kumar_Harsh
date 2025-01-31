@@ -3,63 +3,65 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>BMI_Calaulator</title>
-    <style>
-        body {
-            background-color: #212121;
-            color: aliceblue;
-        }
-        .centering {
-            display: flex;
-            justify-content: center;
-        }
-        .submit {
-            padding: 10px;
-        }
-        
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="mainContainer">
-        <h1 class="heading centering">BMI Calculator</h1>
-        <div>
-            <form id="formSelector">
-                <div class="heightInput centering">
-                    <label>Height in CM:  </label>
-                    <input type="text" id="height">
+    <div class="container">
+        <div class="calculator">
+            <div class="header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="scale-icon">
+                    <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+                    <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+                    <path d="M7 21h10"></path>
+                    <path d="M12 3v18"></path>
+                    <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path>
+                </svg>
+                <h1>BMI Calculator</h1>
+            </div>
+
+            <form id="bmi-form">
+                <div class="input-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" required placeholder="Enter height in centimeters">
                 </div>
-                <br>
-                <div class="weightInput centering">
-                    <label>Weight in KG:  </label>
-                    <input type="text" id="weight">
+
+                <div class="input-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" required placeholder="Enter weight in kilograms">
                 </div>
-                <div class="centering submit">
-                    <button id="submitButton">Calculate</button>
-                </div>
+
+                <button type="submit">Calculate BMI</button>
             </form>
+
+            <div id="result" class="result hidden">
+                <div class="bmi-value">
+                    <span id="bmi-number"></span>
+                    <span class="unit">kg/m²</span>
+                </div>
+                <div id="bmi-category" class="category"></div>
+                <div class="info">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
+                    <p id="bmi-description"></p>
+                </div>
+            </div>
+
+            <div class="bmi-ranges">
+                <h3>BMI Categories:</h3>
+                <ul id="ranges-list"></ul>
+            </div>
         </div>
-        <br>
-        <br>
-        <div class="result centering"> </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
-<script>
-    document.getElementById("formSelector").addEventListener("submit", function (eventTriggered) {
-        eventTriggered.preventDefault();
-        let heightValue = document.querySelector("#height").value;
-        let weightValue = document.getElementById("weight").value;
-
-        if (heightValue === "" || heightValue < 0 || weightValue === "" || weightValue < 0 || isNaN(heightValue) || isNaN(weightValue)) {
-            document.querySelector(".result").textContent = "Please enter valid data Entry points";
-        }
-        else {
-            resultingBMI = ((weightValue)/(heightValue*heightValue)).toFixed(3);
-            document.querySelector(".result").textContent = `The BMI of the user is ${resultingBMI}`;
-        }
-        
-    })
-    
-</script>
 </html>
