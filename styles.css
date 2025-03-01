@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #4f46e5;
-    --primary-hover: #4338ca;
+    --primary-color: #228B22;
+    --primary-hover: #008000;
     --text-color: #1f2937;
     --text-light: #6b7280;
     --bg-color: #f3f4f6;
@@ -18,7 +18,7 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background: linear-gradient(to bottom right, #eef2ff, #e0e7ff);
+    background: linear-gradient(to bottom right, #beefad, #05e794);
     color: var(--text-color);
     min-height: 100vh;
     line-height: 1.5;
